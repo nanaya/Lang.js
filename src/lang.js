@@ -182,7 +182,9 @@
             : {};
 
         // The count must be replaced if found in the message
-        replacements.count = number;
+        if (replacements.count == null) {
+            replacements.count = number;
+        }
 
         // Message to get the plural or singular
         var message = this.get(key, replacements, locale);

@@ -102,4 +102,14 @@ describe('The lang.choice() method', function () {
         expect(lang.choice('test.box', 10)).toBe('10 boxes');
     });
 
+    it('should keep explicitly set count replacement', function() {
+        lang.setMessages({
+            'en.test': {
+                'box': ':count box|:count boxes'
+            }
+        });
+        expect(lang.choice('test.box', 1, {count: 'one'})).toBe('one box');
+        expect(lang.choice('test.box', 2, {count: 'two'})).toBe('two boxes');
+    });
+
 });
